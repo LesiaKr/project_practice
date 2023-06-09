@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Online Library</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/style.css'>   
+</head>
+
+<body>
+    
+    <header class="nav-bar">
+        <h1 class="logo">Online Books Library</h1>
+        <nav>
+            <ul class="link-list">
+                <li class="link-item"><a href="#home" class="active">Пошук книги</a></li>
+                <li class="link-item"><a href="#list">Управління даними</a></li>
+                <li class="link-item"><a href="#add-new">Додати автора</a></li>
+                <li class="link-item"><a href="#add-new-book">Додати книгу</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+       
+        <section id="home" class="active">
+            <header class="header">
+                <p class="time"></p>
+                <h1 class="heading">Онлайн бібліотека</h1>
+                <h3>Пошук книги</h3>
+                <div class="header_search">
+                    <div class="search">
+                        <input id="search-input" type="text" placeholder="Введіть назву книги">
+                        <button id="search-button">Знайти</button>
+                    </div>
+                </div>
+                <div class="filters">
+                    <fieldset>
+                        <legend>Пошук за жанром</legend>
+                        <select id="filter-category" class="filter addOption">
+                            <option value="Oбрати" disabled selected>Обрати жанр</option>
+                            <option value="">Всі</option>
+                        </select>
+                    </fieldset>
+                </div><br>
+                <div class="addNewBook">
+                    <a href="#add-new-book" style="display: block;"><button>Додати нову книгу</button></a>
+                </div>
+            </header>
+            <main class="wrapper">
+                <div class="content">
+                    <h2 class="title">Результат пошуку</h2>
+                    <div id="results" class="results"></div>
+                </div>   
+            </main>
+        </section>
+
+        <section id="list" >
+            <h2 style="background-color: wheat;">Список авторів та книг</h2>
+            <div id="authorBlock">
+                <ul id="authorList">
+                </ul>
+            </div>
+           
+            <form id="output" >
+                <div class="form-group">
+                    <label for="firstName">Ім'я</label>
+                    <input type="text" name="firstName" id="firstName" disabled required>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Прізвище</label>
+                    <input type="text" name="lastName" id="lastName" disabled required>
+                </div>
+                <div class="form-group">
+                    <label for="patronymic">По батькові</label>
+                    <input type="text" name="patronymic" id="patronymic" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="dataBrth">Дата народження</label>
+                    <input type="text" name="dataBrth" id="dataBrth" disabled required>
+                </div>
+                <div class="form-group">
+                    <label for="title">Книгa</label>
+                    <input type="text" name="title" id="title" disabled required>
+                </div>
+                <div class="form-group">
+                    <label for="countPage">К-ть сторінок</label>
+                    <input type="number" name="countPage" id="countPage" disabled required>
+                </div> 
+                <div class="form-group minusEdit">
+                    <label for="genreInp">Жанр</label>
+                    <input type="text" name="genreInp" id="genreInp" disabled required>
+                </div> 
+                <div class="form-group plusEdit">       
+                    <label for="genreEd">Жанр</label>      
+                    <select name="genreEd" class="genreEd addOption" >
+                        <option value="Обрати" selected disabled>Обрати</option>
+                        <option value="Поезія">Поезія</option>
+                        <option value="Роман">Роман</option>
+                        <option value="Драма">Драма</option>
+                        <option value="Комедія">Комедія</option>
+                        <option value="Детектив">Детектив</option>
+                    </select> 
+                    <button type="button" id="newGenreBtnB">Додати інший жанр</button>
+
+                    <div class="overlayB">
+                        <div class="contentsB">
+                            <span class="closeB">&times;</span>
+                            <h1>Введіть новий жанр</h1>
+                            <input type="text" name="newGenreInputB"> <br> <br>
+                            <button type="button" id="newGenreToListB">Додати</button>
+                        </div>
+                    </div> <br>                  
+                </div> 
+                <div id="inpBtn">
+                    <input type="button" value="Редагувати" id="editButton">
+                    <input type="button" value="Зберегти" id="saveButton"><br>
+                    <input type="reset" value="Очистити" id="clearButton">
+                    <input type="reset" value="Видалити" id="deleteButton">
+                </div>
+            </form> <br/> <br>
+            <button id="addAuthorBtn"><a href="#add-new" style="display: block;">Додати автора</a></button>
+        </section>
+
+        <section id="add-new">
+            <h2>Додати автора</h2>
+                <form id="form">
+                    <div class="form-group-new">
+                        <label for="firstName">Ім'я</label>
+                        <input type="text" class="name-input" name="firstName" id="firstName" required>
+                    </div>
+                    <div class="form-group-new">
+                        <label for="lastName">Прізвище</label>
+                        <input type="text" class="lastName-input" name="lastName" id="lastName" required>
+                    </div>
+                        
+                    <div class="form-group-new">
+                        <label for="patronymic">По батькові</label>
+                        <input type="text" class="patronymic-input" name="patronymic" id="patronymic">
+                    </div>
+                    <div class="form-group-new">
+                        <label for="dataBrth">Дата народження</label>
+                        <input type="date" class="dataBrth-input" name="dataBrth" id="dataBrth" required>
+                    </div>
+                    <p style="font-weight: bold;">Книгa</p>
+                    <div class="form-group-new">
+                        <label for="title">Назва</label>
+                        <input type="text" class="title-input" name="title" id="title" required>
+                    </div>
+                    <div class="form-group-new">
+                        <label for="pages">К-ть сторінок</label>
+                        <input type="number" class="pages-input" name="pages" id="pages" required>
+                    </div>
+                    <div class="form-group-new">
+                        <label for="genre">Жанр</label>
+                        <select name="genre" class="genre addOption" >
+                            <option value="Обрати" selected disabled>Обрати</option>
+                            <option value="Поезія">Поезія</option>
+                            <option value="Роман">Роман</option>
+                            <option value="Драма">Драма</option>
+                            <option value="Комедія">Комедія</option>
+                            <option value="Детектив">Детектив</option>
+                        </select>     
+                    </div>
+                    <button type="button" id="newGenreBtnA">Додати інший жанр</button> <br> <br>
+                    <div class="overlayA">
+                        <div class="contentsA">
+                            <span class="closeA">&times;</span>
+                            <h1>Введіть новий жанр</h1>
+                            <input type="text" name="newGenreInputA"> <br> <br>
+                            <button type="button" id="newGenreToListA">Додати</button>
+                        </div>
+                    </div>                            
+                    <button type="submit" id="add-author-btn">Додати</button>
+                    <br/> <br>
+                    <a href="#list" style="display: block;">&#8592 Перейти до списку авторів</a>
+                </form>
+        </section>
+
+        <section id="add-new-book">
+            <h2>Додати книгу</h2>
+                <form id="form">
+                    <div class="form-group-new">
+                        <label for="title">Назва</label>
+                        <input type="text" class="title-inputNew" name="titleNew" id="titleNew" required>
+                    </div>
+                    <div class="form-group-new">
+                        <label for="pages">К-ть сторінок</label>
+                        <input type="number" class="pages-inputNew" name="pagesNew" id="pagesNew" required>
+                    </div>
+                    <div class="form-group-new">
+                        <label for="genres">Обрати жанр</label>
+                        <select name="genres" class="genres addOption" >
+                            <option value="Обрати" selected disabled>Обрати</option>
+                            <option value="Поезія">Поезія</option>
+                            <option value="Роман">Роман</option>
+                            <option value="Драма">Драма</option>
+                            <option value="Комедія">Комедія</option>
+                            <option value="Детектив">Детектив</option>
+                        </select>
+                    </div>
+                    <button type="button" id="newGenreBtn">Додати інший жанр</button>
+                    <div class="overlay">
+                        <div class="contents">
+                            <span class="close">&times;</span>
+                            <h1>Введіть новий жанр</h1>
+                            <input type="text" name="newGenreInput"> <br> <br>
+                            <button type="button" id="newGenreToList">Додати</button>
+                        </div>
+                    </div>
+                    <div class="form-group-new">
+                        <p style="font-weight: bold;">Автор</p>
+                        <label for="firstName">Ім'я</label>
+                        <input type="text" class="name-inputNew" name="firstNameNew" id="firstNameNew" required>
+                    </div>
+                    <div class="form-group-new">
+                        <label for="lastName">Прізвище</label>
+                        <input type="text" class="lastName-inputNew" name="lastNameNew" id="lastNameNew" required>
+                    </div>
+                    <div class="form-group-new">
+                        <label for="patronymic">По батькові</label>
+                        <input type="text" class="patronymic-inputNew" name="patronymicNew" id="patronymicNew">
+                    </div>
+                    <div class="form-group-new">
+                        <label for="dataBrth">Дата народження</label>
+                        <input type="date" class="dataBrth-inputNew" name="dataBrthNew" id="dataBrthNew" required>
+                    </div> <br>
+                    <button type="submit" id="add-book-btn">Додати</button> <br/> <br/>
+                    <a href="#home" style="display: block;">&#8592 Перейти до списку книг</a> <br/>   
+                </form>
+        </section>
+    </main>
+    <footer>
+        copyright 2023
+    </footer>
+   
+    <script src="js/data.js"></script>
+    <script src="js/index.js"></script>
+    <script>
+         const currentDate = new Date();
+         document.querySelector('.time').innerHTML = currentDate;
+    </script>
+</body>
+</html>
